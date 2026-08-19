@@ -1,0 +1,149 @@
+/*
+===========================
+Stored Procedure: Load Bronze Layer (Source > bronze)
+===========================
+Script Purpose:
+  This Stored Procedure loads data into the 'bronze' schema from external CSV file.
+  It performs de the following actions
+  - Trucate de the bronze table before loading the data
+  - Use teh 'BULK INSERT' to load the data from csv to bronze tables
+
+Parameters:
+  None.
+  This Stored Procedure does not accept any parameters or return any values
+
+Usege Example:
+  EXEC bronze.load_bronze;
+
+===========================
+*/
+
+CREATE OR ALTER PROCEDURE bronze.load_bronze AS
+BEGIN
+	
+	DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @batch_end_time DATETIME;
+
+	BEGIN TRY
+		Set @batch_start_time = GETDATE();
+		PRINT '==========================';
+		PRINT 'Carregando Camada Bronze'
+		PRINT '==========================';
+
+		PRINT '--------------------------';
+		PRINT 'Carregando Tabelas do CRM'
+		PRINT '--------------------------';
+
+		SET @start_time = GETDATE();
+		PRINT '>> Excluindo dados da tabela: bronze.crm_cust_info';
+		TRUNCATE TABLE bronze.crm_cust_info
+
+		PRINT '>> Inserindo dados na tabela: bronze.crm_cust_info';
+		BULK INSERT bronze.crm_cust_info
+		FROM '/var/opt/mssql/datasets/source_crm/cust_info.csv'
+		WITH (
+			FIRSTROW = 2,
+			FIELDTERMINATOR = ',',
+			TABLOCK
+		)
+		SET @END_time = GETDATE();
+		PRINT 'Tempo de carregamento: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' segundos'
+		PRINT '-------------------';
+
+
+		SET @start_time = GETDATE();
+		PRINT '>> Excluindo dados da tabela: bronze.crm_prd_info';
+		TRUNCATE TABLE bronze.crm_prd_info
+
+		PRINT '>> Inserindo dados na tabela: bronze.crm_prd_info';
+		BULK INSERT bronze.crm_prd_info
+		FROM '/var/opt/mssql/datasets/source_crm/prd_info.csv'
+		WITH (
+			FIRSTROW = 2,
+			FIELDTERMINATOR = ',',
+			TABLOCK
+		)
+		SET @END_time = GETDATE();
+		PRINT 'Tempo de carregamento: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' segundos';
+		PRINT '-------------------';
+
+
+		SET @start_time = GETDATE();
+		PRINT '>> Excluindo dados da tabela: bronze.crm_sales_details';
+		TRUNCATE TABLE bronze.crm_sales_details
+
+		PRINT '>> Inserindo dados na tabela: bronze.crm_sales_details';
+		BULK INSERT bronze.crm_sales_details
+		FROM '/var/opt/mssql/datasets/source_crm/sales_details.csv'
+		WITH (
+			FIRSTROW = 2,
+			FIELDTERMINATOR = ',',
+			TABLOCK
+		)
+		SET @END_time = GETDATE();
+		PRINT 'Tempo de carregamento: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' segundos';
+		PRINT '-------------------';
+
+		PRINT '--------------------------';
+		PRINT 'Carregando Tabelas do ERP'
+		PRINT '--------------------------';
+
+		SET @start_time = GETDATE();
+		PRINT '>> Excluindo dados da tabela: bronze.erp_cust_az12';
+		TRUNCATE TABLE bronze.erp_cust_az12
+
+		PRINT '>> Inserindo dados na tabela: bronze.erp_cust_az12';
+		BULK INSERT bronze.erp_cust_az12
+		FROM '/var/opt/mssql/datasets/source_erp/cust_az12.csv'
+		WITH (
+			FIRSTROW = 2,
+			FIELDTERMINATOR = ',',
+			TABLOCK
+		)
+		SET @END_time = GETDATE();
+		PRINT 'Tempo de carregamento: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' segundos';
+		PRINT '-------------------';
+
+		SET @start_time = GETDATE();
+		PRINT '>> Excluindo dados da tabela: bronze.erp_loc_a101';
+		TRUNCATE TABLE bronze.erp_loc_a101
+
+		PRINT '>> Inserindo dados na tabela: bronze.erp_loc_a101';
+		BULK INSERT bronze.erp_loc_a101
+		FROM '/var/opt/mssql/datasets/source_erp/loc_a101.csv'
+		WITH (
+			FIRSTROW = 2,
+			FIELDTERMINATOR = ',',
+			TABLOCK
+		)
+		SET @END_time = GETDATE();
+		PRINT 'Tempo de carregamento: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' segundos';
+		PRINT '-------------------';
+
+		SET @start_time = GETDATE();
+		PRINT '>> Excluindo dados da tabela: bronze.erp_px_cat_g1v2';
+		TRUNCATE TABLE bronze.erp_px_cat_g1v2
+
+		PRINT '>> Inserindo dados na tabela: bronze.erp_px_cat_g1v2';
+		BULK INSERT bronze.erp_px_cat_g1v2
+		FROM '/var/opt/mssql/datasets/source_erp/px_cat_g1v2.csv'
+		WITH (
+			FIRSTROW = 2,
+			FIELDTERMINATOR = ',',
+			TABLOCK
+		)
+		SET @END_time = GETDATE();
+		PRINT 'Tempo de carregamento: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' segundos';
+		PRINT '-------------------';
+
+		Set @batch_end_time = GETDATE();
+		PRINT '-------------------'
+		PRINT 'Carregamento da Camada de Bronze foi conlcuído'
+		PRINT 'Tempo total de carregamento: ' + CAST(DATEDIFF(second, @batch_start_time, @batch_end_time) AS NVARCHAR) + ' segundos';
+		PRINT '-------------------'
+
+	END TRY
+
+	BEGIN CATCH
+		PRINT 'Ocorreu um erro ao carregar a camada de bronze'
+	END CATCH
+END
