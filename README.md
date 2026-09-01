@@ -26,9 +26,9 @@ Este projeto envolve:
 🎯 Este repositório é um excelente recurso para profissionais e estudantes que desejam demonstrar experiência em:
 - Desenvolvimento SQL
 - Arquitetura de Dados
-- Engenharia de Dados  
-- Desenvolvimento de Pipelines ETL  
-- Modelagem de Dados  
+- Engenharia de Dados
+- Desenvolvimento de Pipelines ETL
+- Modelagem de Dados
 - Análise de Dados (Data Analytics)
 
 ---
@@ -71,6 +71,36 @@ Desenvolver análises baseadas em SQL para fornecer insights detalhados sobre:
 
 Esses insights capacitam os stakeholders com métricas de negócios fundamentais, permitindo tomadas de decisão estratégicas.  
 
-Para mais detalhes, consulte [docs/requirements.md](docs/requirements.md).
 
 ## 📂 Estrutura do Repositório
+```text
+data-warehouse-project/
+│
+├── datasets/                            # Conjuntos de dados brutos usados no projeto (dados de ERP e CRM)
+│
+├── docs/                                # Documentação do projeto e detalhes da arquitetura
+│   ├── etl.drawio                       # Arquivo Draw.io que mostra todas as diferentes técnicas e métodos de ETL
+│   ├── data_architecture.drawio         # Arquivo Draw.io que mostra a arquitetura do projeto
+│   ├── data_catalog.md                  # Catálogo de conjuntos de dados, incluindo descrições de campos e metadados
+│   ├── data_flow.drawio                 # Arquivo Draw.io do diagrama de fluxo de dados
+│   ├── data_models.drawio               # Arquivo Draw.io dos modelos de dados (star schema)
+│   ├── naming-conventions.md            # Diretrizes consistentes de nomenclatura para tabelas, colunas e arquivos
+│
+├── scripts/                             # Scripts SQL para ETL e transformações
+│   ├── bronze/                          # Scripts para extração e carga de dados brutos
+│   ├── silver/                          # Scripts para limpeza e transformação de dados
+│   ├── gold/                            # Scripts para criação de modelos analíticos
+│
+├── tests/                               # Scripts de teste e arquivos de qualidade
+│
+├── README.md                            # Visão geral do projeto e instruções
+├── LICENSE                              # Informações de licença do repositório
+├── .gitignore                           # Arquivos e diretórios a serem ignorados pelo Git
+└── requirements.txt                     # Dependências e requisitos do projeto
+```
+---
+
+
+## 🛡️ Licença
+
+Este projeto é licenciado sob a [Licença MIT](LICENSE). Você é livre para usar, modificar e compartilhar este projeto com a devida atribuição.
