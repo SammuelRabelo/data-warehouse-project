@@ -1,109 +1,76 @@
+# Projeto de Data Warehouse e Analytics
 
-# Data Warehouse and Analytics Project
-
-Welcome to the **Data Warehouse and Analytics Project** repository! 🚀  
-This project demonstrates a comprehensive data warehousing and analytics solution, from building a data warehouse to generating actionable insights. Designed as a portfolio project, it highlights industry best practices in data engineering and analytics.
+Bem-vindo ao repositório do **Projeto de Data Warehouse e Analytics**! 🚀  
+Este projeto demonstra uma solução abrangente de data warehousing e analytics, desde a construção de um data warehouse até a geração de insights acionáveis. Projetado como um projeto de portfólio, ele destaca as melhores práticas da indústria em engenharia de dados e analytics.
 
 ---
-## 🏗️ Data Architecture
+## 🏗️ Arquitetura de Dados
 
-The data architecture for this project follows Medallion Architecture **Bronze**, **Silver**, and **Gold** layers:
+A arquitetura de dados para este projeto segue as camadas **Bronze**, **Silver** e **Gold** da Arquitetura Medallion:
 ![Data Architecture](docs/data_architecture.png)
 
-1. **Bronze Layer**: Stores raw data as-is from the source systems. Data is ingested from CSV Files into SQL Server Database.
-2. **Silver Layer**: This layer includes data cleansing, standardization, and normalization processes to prepare data for analysis.
-3. **Gold Layer**: Houses business-ready data modeled into a star schema required for reporting and analytics.
+1. **Camada Bronze**: Armazena dados brutos exatamente como vêm dos sistemas de origem. Os dados são ingeridos de arquivos CSV para um Banco de Dados SQL Server.
+2. **Camada Silver**: Esta camada inclui processos de limpeza, padronização e normalização de dados para prepará-los para análise.
+3. **Camada Gold**: Abriga os dados prontos para o negócio, modelados em um *star schema* (esquema estrela) necessário para relatórios e analytics.
 
 ---
-## 📖 Project Overview
+## 📖 Visão Geral do Projeto
 
-This project involves:
+Este projeto envolve:
 
-1. **Data Architecture**: Designing a Modern Data Warehouse Using Medallion Architecture **Bronze**, **Silver**, and **Gold** layers.
-2. **ETL Pipelines**: Extracting, transforming, and loading data from source systems into the warehouse.
-3. **Data Modeling**: Developing fact and dimension tables optimized for analytical queries.
-4. **Analytics & Reporting**: Creating SQL-based reports and dashboards for actionable insights.
+1. **Arquitetura de Dados**: Design de um Data Warehouse Moderno usando as camadas **Bronze**, **Silver** e **Gold** da Arquitetura Medallion.
+2. **Pipelines de ETL**: Extração, transformação e carga (ETL) de dados dos sistemas de origem para o data warehouse.
+3. **Modelagem de Dados**: Desenvolvimento de tabelas fato e dimensão otimizadas para consultas analíticas.
+4. **Analytics e Relatórios**: Criação de relatórios baseados em SQL e dashboards para insights acionáveis.
 
-🎯 This repository is an excellent resource for professionals and students looking to showcase expertise in:
-- SQL Development
-- Data Architect
-- Data Engineering  
-- ETL Pipeline Developer  
-- Data Modeling  
-- Data Analytics  
-
----
-
-## 🛠️ Important Links & Tools:
-
-Everything is for Free!
-- **[Datasets](datasets/):** Access to the project dataset (csv files).
-- **[SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads):** Lightweight server for hosting your SQL database.
-- **[SQL Server Management Studio (SSMS)](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16):** GUI for managing and interacting with databases.
-- **[Git Repository](https://github.com/):** Set up a GitHub account and repository to manage, version, and collaborate on your code efficiently.
-- **[DrawIO](https://www.drawio.com/):** Design data architecture, models, flows, and diagrams.
-- **[Notion](https://www.notion.com/):** All-in-one tool for project management and organization.
-- **[Notion Project Steps](https://thankful-pangolin-2ca.notion.site/SQL-Data-Warehouse-Project-16ed041640ef80489667cfe2f380b269?pvs=4):** Access to All Project Phases and Tasks.
+🎯 Este repositório é um excelente recurso para profissionais e estudantes que desejam demonstrar experiência em:
+- Desenvolvimento SQL
+- Arquitetura de Dados
+- Engenharia de Dados  
+- Desenvolvimento de Pipelines ETL  
+- Modelagem de Dados  
+- Análise de Dados (Data Analytics)
 
 ---
 
-## 🚀 Project Requirements
+## 🛠️ Links e Ferramentas Importantes:
 
-### Building the Data Warehouse (Data Engineering)
-
-#### Objective
-Develop a modern data warehouse using SQL Server to consolidate sales data, enabling analytical reporting and informed decision-making.
-
-#### Specifications
-- **Data Sources**: Import data from two source systems (ERP and CRM) provided as CSV files.
-- **Data Quality**: Cleanse and resolve data quality issues prior to analysis.
-- **Integration**: Combine both sources into a single, user-friendly data model designed for analytical queries.
-- **Scope**: Focus on the latest dataset only; historization of data is not required.
-- **Documentation**: Provide clear documentation of the data model to support both business stakeholders and analytics teams.
+Tudo é gratuito!
+- **[Datasets](datasets/):** Acesso ao conjunto de dados do projeto (arquivos csv).
+- **[SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads):** Servidor leve para hospedar seu banco de dados SQL.
+- **[SQL Server Management Studio (SSMS)](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16):** Interface gráfica (GUI) para gerenciar e interagir com bancos de dados.
+- **[Git Repository](https://github.com/):** Configure uma conta e um repositório no GitHub para gerenciar, versionar e colaborar com seu código de forma eficiente.
+- **[DrawIO](https://www.drawio.com/):** Projete a arquitetura de dados, modelos, fluxos e diagramas.
+- **[Notion](https://www.notion.com/):** Ferramenta completa (All-in-one) para gestão e organização de projetos.
 
 ---
 
-### BI: Analytics & Reporting (Data Analysis)
+## 🚀 Requisitos do Projeto
 
-#### Objective
-Develop SQL-based analytics to deliver detailed insights into:
-- **Customer Behavior**
-- **Product Performance**
-- **Sales Trends**
+### Construindo o Data Warehouse (Engenharia de Dados)
 
-These insights empower stakeholders with key business metrics, enabling strategic decision-making.  
+#### Objetivo
+Desenvolver um data warehouse moderno usando SQL Server para consolidar dados de vendas, permitindo relatórios analíticos e tomadas de decisão informadas.
 
-For more details, refer to [docs/requirements.md](docs/requirements.md).
+#### Especificações
+- **Fontes de Dados**: Importar dados de dois sistemas de origem (ERP e CRM) fornecidos como arquivos CSV.
+- **Qualidade de Dados**: Limpar e resolver problemas de qualidade de dados antes da análise.
+- **Integração**: Combinar ambas as fontes em um modelo de dados único e amigável, projetado para consultas analíticas.
+- **Escopo**: Focar apenas no conjunto de dados mais recente; não é necessário o histórico (historization) dos dados.
+- **Documentação**: Fornecer documentação clara do modelo de dados para apoiar tanto os stakeholders de negócios quanto as equipes de analytics.
 
-## 📂 Repository Structure
-```
-data-warehouse-project/
-│
-├── datasets/                           # Raw datasets used for the project (ERP and CRM data)
-│
-├── docs/                               # Project documentation and architecture details
-│   ├── etl.drawio                      # Draw.io file shows all different techniquies and methods of ETL
-│   ├── data_architecture.drawio        # Draw.io file shows the project's architecture
-│   ├── data_catalog.md                 # Catalog of datasets, including field descriptions and metadata
-│   ├── data_flow.drawio                # Draw.io file for the data flow diagram
-│   ├── data_models.drawio              # Draw.io file for data models (star schema)
-│   ├── naming-conventions.md           # Consistent naming guidelines for tables, columns, and files
-│
-├── scripts/                            # SQL scripts for ETL and transformations
-│   ├── bronze/                         # Scripts for extracting and loading raw data
-│   ├── silver/                         # Scripts for cleaning and transforming data
-│   ├── gold/                           # Scripts for creating analytical models
-│
-├── tests/                              # Test scripts and quality files
-│
-├── README.md                           # Project overview and instructions
-├── LICENSE                             # License information for the repository
-├── .gitignore                          # Files and directories to be ignored by Git
-└── requirements.txt                    # Dependencies and requirements for the project
-```
 ---
 
+### BI: Analytics e Relatórios (Análise de Dados)
 
-## 🛡️ License
+#### Objetivo
+Desenvolver análises baseadas em SQL para fornecer insights detalhados sobre:
+- **Comportamento do Cliente**
+- **Desempenho do Produto**
+- **Tendências de Vendas**
 
-This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and share this project with proper attribution.
+Esses insights capacitam os stakeholders com métricas de negócios fundamentais, permitindo tomadas de decisão estratégicas.  
+
+Para mais detalhes, consulte [docs/requirements.md](docs/requirements.md).
+
+## 📂 Estrutura do Repositório
