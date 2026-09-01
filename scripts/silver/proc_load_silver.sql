@@ -152,7 +152,7 @@ BEGIN
 		SELECT
 			prd_id,
 			REPLACE(SUBSTRING(prd_key, 1, 5), '-', '_') AS cat_id,
-			SUBSTRING(prd_key, 1, LEN(prd_key)) AS prd_key,
+			SUBSTRING(prd_key, 7, LEN(prd_key)) AS prd_key,
 			prd_nm,
 			ISNULL(prd_cost, 0) AS prd_cost,
 			CASE
